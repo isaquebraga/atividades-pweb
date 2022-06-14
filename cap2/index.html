@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+
+    <script src="/animacao.js"></script>
+    <script src="/bola.js"></script>
+</head>
+<body>
+    <canvas id="canvas-animacao" width="500" height="500">
+
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas-animacao");
+        var context = canvas.getContext("2d");
+
+        var b1 = new Bola(context);
+        b1.x = 100;
+        b1.y = 200;
+        b1.velocidadeX = 20;
+        b1.velocidadeY = -10;
+        b1.cor = "#FF0000";
+        b1.raio = 20;
+
+        var b2 = new Bola(context);
+        b2.x = 200;
+        b2.y = 100;
+        b2.velocidadeX = -10;
+        b2.velocidadeY = 20;
+        b2.cor = "#0000FF";
+        b2.raio = 20;
+
+        var animacao = new Animacao();
+        animacao.novoSprite(b1);
+        animacao.novoSprite(b2);
+
+        animacao.ligar();
+    </script>
+</body>
+</html>
