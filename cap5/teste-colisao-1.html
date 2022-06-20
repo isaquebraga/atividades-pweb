@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>capitulo 5 - teste colisao</title>
+
+   <script src="colisor.js"></script>
+   <script src="bola.js"></script>
+</head>
+
+<body>
+   <canvas id="canvas_colisao" width="500" height="500"></canvas>
+   <script>
+      var canvas = document.getElementById('canvas_colisao');
+      var context = canvas.getContext('2d');
+
+      var b1 = new Bola(context);
+      b1.x = 200;
+      b1.y = 200;
+      b1.velocidadeX = 10;
+      b1.velocidadeY = -5;
+      b1.cor = "#000000";
+      b1.raio = 20;
+
+      var b2 = new Bola(context);
+      b2.x = 300;
+      b2.y = 300;
+      b2.velocidadeX = -5;
+      b2.velocidadeY = 10;
+      b2.cor = "#FF0000";
+      b2.raio = 30;  
+
+      var colisor = new Colisor();
+      colisor.novoSprite(b1);
+      colisor.novoSprite(b2);
+
+      colisor.aoColidir = function(s1, s2) {
+         alert("encostaram");
+      };
+
+      requestAnimationFrame(animar);
+
+      function animar() {
+         // Limpando a tela
+         context.clearRect(0, 0, canvas.width, canvas.height);
+
+         // Atualizando os sprites
+         b1.atualizar();
+         b2.atualizar();
+
+         // Desenhando
+         b1.desenhar();
+         b2.desenhar();
+
+         // Processar colisões
+         colisor.processar();
+
+         requestAnimationFrame(animar);
+      }
+   </script>
+</body>
+
+</html>
