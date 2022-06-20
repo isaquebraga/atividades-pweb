@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>capitulo 7 - teste bug</title>
+</head>
+
+<body>
+   <script>
+      // Criar um array
+      var meuArray = ['banana', 'laranja', 'limão'];
+      
+      // Fazer um loop
+      for (var i in meuArray) {
+         // Forçar uma exclusão dentro do loop
+         if (meuArray[i] == 'laranja')
+            meuArray = excluirElemento(meuArray[i], meuArray);
+            
+         // Fazer alguma tarefa com o array
+         document.write(meuArray[i] + '<br>');
+      }
+      
+      function excluirElemento(elemento, array) {
+         var novoArray = [];
+         
+         for (var i in array) {
+            if (array[i] != elemento)
+               novoArray[i] = array[i];
+         }
+         
+         return novoArray;
+      }
+   </script>
+</body>
+
+</html>
